@@ -1,0 +1,27 @@
+﻿@model AmnPardaz.Core.ModelViews.LoginModelView
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<form action="/" method="post">
+    <div>
+        <lable>UserName:</lable>
+        <input type="text" id="UserName" name="UserName" required />
+        <span id="UserNameError" class="text-danger"> @Html.ValidationMessageFor(m => m.UserName)</span>
+        <br />
+        <label>Password:</label>
+        <input type="password" id="Password" name="Password" required />
+        <span id="UserNameError" class="text-danger"> @Html.ValidationMessageFor(m => m.Password)</span>
+        <br />
+        <input type="submit" value="Index" />
+    </div>  
+</form>
+
+<script>
+    function updateErrorMessage(inputId, errorMessage) {
+        var errorSpan = document.getElementById(inputId + 'Error');
+        errorSpan.textContent = errorMessage;
+    }
+</script>
