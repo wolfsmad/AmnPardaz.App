@@ -11,19 +11,20 @@ namespace AmnPardaz.Domain
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Time
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Courses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Time()
+        public Courses()
         {
-            this.UserWeeks = new HashSet<UserWeek>();
+            this.UserWeek = new HashSet<UserWeek>();
         }
-    
-        public int TimeId { get; set; }
-        public string TimeName { get; set; }
+        [Key]
+        public int CourseId { get; set; }
+        public string Title { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserWeek> UserWeeks { get; set; }
+        public virtual ICollection<UserWeek> UserWeek { get; set; }
     }
 }

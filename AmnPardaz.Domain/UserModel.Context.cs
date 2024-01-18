@@ -18,18 +18,22 @@ namespace AmnPardaz.Domain
         public APDatabaseEntities()
             : base("name=APDatabaseEntities")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<APDatabaseEntities>());
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Entity<Courses>().HasKey(c => c.CourseId);
+            modelBuilder.Entity<DayWeek>().HasKey(d => d.DayId);
+            modelBuilder.Entity<Times>().HasKey(d => d.TimeId);
+            modelBuilder.Entity<Users>().HasKey(d => d.UserId);
+            modelBuilder.Entity<UserWeek>().HasKey(d => d.UWID);
         }
-    
-        public virtual DbSet<Cours> Courses { get; set; }
-        public virtual DbSet<DayWeek> DayWeeks { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Time> Times { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UserWeek> UserWeeks { get; set; }
+
+        public virtual DbSet<Courses> Courses { get; set; }
+        public virtual DbSet<DayWeek> DayWeek { get; set; }
+        public virtual DbSet<Times> Times { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<UserWeek> UserWeek { get; set; }
     }
 }

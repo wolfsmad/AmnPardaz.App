@@ -19,16 +19,6 @@
           <Property Name="DayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DayName" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Times">
           <Key>
             <PropertyRef Name="TimeId" />
@@ -105,7 +95,6 @@
         <EntityContainer Name="APDatabaseModelStoreContainer">
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DayWeek" EntityType="Self.DayWeek" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Times" EntityType="Self.Times" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserWeek" EntityType="Self.UserWeek" Schema="dbo" store:Type="Tables" />
@@ -131,11 +120,10 @@
     <edmx:ConceptualModels>
       <Schema Namespace="APDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="APDatabaseEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="Courses" EntityType="APDatabaseModel.Cours" />
+          <EntitySet Name="Courses" EntityType="APDatabaseModel.Courses" />
           <EntitySet Name="DayWeeks" EntityType="APDatabaseModel.DayWeek" />
-          <EntitySet Name="sysdiagrams" EntityType="APDatabaseModel.sysdiagram" />
-          <EntitySet Name="Times" EntityType="APDatabaseModel.Time" />
-          <EntitySet Name="Users" EntityType="APDatabaseModel.User" />
+          <EntitySet Name="Times1" EntityType="APDatabaseModel.Times" />
+          <EntitySet Name="Users1" EntityType="APDatabaseModel.Users" />
           <EntitySet Name="UserWeeks" EntityType="APDatabaseModel.UserWeek" />
           <AssociationSet Name="FK_UserWeek_Courses" Association="APDatabaseModel.FK_UserWeek_Courses">
             <End Role="Cours" EntitySet="Courses" />
@@ -146,21 +134,21 @@
             <End Role="UserWeek" EntitySet="UserWeeks" />
           </AssociationSet>
           <AssociationSet Name="FK_UserWeek_Times" Association="APDatabaseModel.FK_UserWeek_Times">
-            <End Role="Time" EntitySet="Times" />
+            <End Role="Time" EntitySet="Times1" />
             <End Role="UserWeek" EntitySet="UserWeeks" />
           </AssociationSet>
           <AssociationSet Name="FK_UserWeek_Users" Association="APDatabaseModel.FK_UserWeek_Users">
-            <End Role="User" EntitySet="Users" />
+            <End Role="User" EntitySet="Users1" />
             <End Role="UserWeek" EntitySet="UserWeeks" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Cours">
+        <EntityType Name="Courses">
           <Key>
             <PropertyRef Name="CourseId" />
           </Key>
           <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserWeeks" Relationship="APDatabaseModel.FK_UserWeek_Courses" FromRole="Cours" ToRole="UserWeek" />
+          <NavigationProperty Name="UserWeek" Relationship="APDatabaseModel.FK_UserWeek_Courses" FromRole="Cours" ToRole="UserWeek" />
         </EntityType>
         <EntityType Name="DayWeek">
           <Key>
@@ -168,34 +156,24 @@
           </Key>
           <Property Name="DayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DayName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserWeeks" Relationship="APDatabaseModel.FK_UserWeek_Days" FromRole="DayWeek" ToRole="UserWeek" />
+          <NavigationProperty Name="UserWeek" Relationship="APDatabaseModel.FK_UserWeek_Days" FromRole="DayWeek" ToRole="UserWeek" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Time">
+        <EntityType Name="Times">
           <Key>
             <PropertyRef Name="TimeId" />
           </Key>
           <Property Name="TimeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TimeName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserWeeks" Relationship="APDatabaseModel.FK_UserWeek_Times" FromRole="Time" ToRole="UserWeek" />
+          <NavigationProperty Name="UserWeek" Relationship="APDatabaseModel.FK_UserWeek_Times" FromRole="Time" ToRole="UserWeek" />
         </EntityType>
-        <EntityType Name="User">
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserWeeks" Relationship="APDatabaseModel.FK_UserWeek_Users" FromRole="User" ToRole="UserWeek" />
+          <NavigationProperty Name="UserWeek" Relationship="APDatabaseModel.FK_UserWeek_Users" FromRole="User" ToRole="UserWeek" />
         </EntityType>
         <EntityType Name="UserWeek">
           <Key>
@@ -206,13 +184,13 @@
           <Property Name="DayId" Type="Int32" Nullable="false" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
           <Property Name="TimeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cours" Relationship="APDatabaseModel.FK_UserWeek_Courses" FromRole="UserWeek" ToRole="Cours" />
+          <NavigationProperty Name="Courses" Relationship="APDatabaseModel.FK_UserWeek_Courses" FromRole="UserWeek" ToRole="Cours" />
           <NavigationProperty Name="DayWeek" Relationship="APDatabaseModel.FK_UserWeek_Days" FromRole="UserWeek" ToRole="DayWeek" />
-          <NavigationProperty Name="Time" Relationship="APDatabaseModel.FK_UserWeek_Times" FromRole="UserWeek" ToRole="Time" />
-          <NavigationProperty Name="User" Relationship="APDatabaseModel.FK_UserWeek_Users" FromRole="UserWeek" ToRole="User" />
+          <NavigationProperty Name="Times" Relationship="APDatabaseModel.FK_UserWeek_Times" FromRole="UserWeek" ToRole="Time" />
+          <NavigationProperty Name="Users" Relationship="APDatabaseModel.FK_UserWeek_Users" FromRole="UserWeek" ToRole="User" />
         </EntityType>
         <Association Name="FK_UserWeek_Courses">
-          <End Type="APDatabaseModel.Cours" Role="Cours" Multiplicity="1" />
+          <End Type="APDatabaseModel.Courses" Role="Cours" Multiplicity="1" />
           <End Type="APDatabaseModel.UserWeek" Role="UserWeek" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cours">
@@ -236,7 +214,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserWeek_Times">
-          <End Type="APDatabaseModel.Time" Role="Time" Multiplicity="1" />
+          <End Type="APDatabaseModel.Times" Role="Time" Multiplicity="1" />
           <End Type="APDatabaseModel.UserWeek" Role="UserWeek" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Time">
@@ -248,7 +226,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserWeek_Users">
-          <End Type="APDatabaseModel.User" Role="User" Multiplicity="1" />
+          <End Type="APDatabaseModel.Users" Role="User" Multiplicity="1" />
           <End Type="APDatabaseModel.UserWeek" Role="UserWeek" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -259,14 +237,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="APDatabaseModelStoreContainer" CdmEntityContainer="APDatabaseEntities" >
           <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="APDatabaseModel.Cours">
+            <EntityTypeMapping TypeName="APDatabaseModel.Courses">
               <MappingFragment StoreEntitySet="Courses">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
@@ -281,27 +259,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="APDatabaseModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Times">
-            <EntityTypeMapping TypeName="APDatabaseModel.Time">
+          <EntitySetMapping Name="Times1">
+            <EntityTypeMapping TypeName="APDatabaseModel.Times">
               <MappingFragment StoreEntitySet="Times">
                 <ScalarProperty Name="TimeName" ColumnName="TimeName" />
                 <ScalarProperty Name="TimeId" ColumnName="TimeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="APDatabaseModel.User">
+          <EntitySetMapping Name="Users1">
+            <EntityTypeMapping TypeName="APDatabaseModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
