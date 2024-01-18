@@ -5,7 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="eb1b7bd7d0e84d82891a06a263694675" Name="Diagram1" >
-        <EntityTypeShape EntityType="APDatabaseModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="APDatabaseModel.Cours" Width="1.5" PointX="5" PointY="9.25" />
+        <EntityTypeShape EntityType="APDatabaseModel.DayWeek" Width="1.5" PointX="5" PointY="1" />
+        <EntityTypeShape EntityType="APDatabaseModel.sysdiagram" Width="1.5" PointX="7" PointY="4.25" />
+        <EntityTypeShape EntityType="APDatabaseModel.Time" Width="1.5" PointX="5" PointY="6.875" />
+        <EntityTypeShape EntityType="APDatabaseModel.User" Width="1.5" PointX="5" PointY="4.375" />
+        <EntityTypeShape EntityType="APDatabaseModel.UserWeek" Width="1.5" PointX="7.25" PointY="0.5" />
+        <AssociationConnector Association="APDatabaseModel.FK_UserWeek_Courses" />
+        <AssociationConnector Association="APDatabaseModel.FK_UserWeek_Days" />
+        <AssociationConnector Association="APDatabaseModel.FK_UserWeek_Times" />
+        <AssociationConnector Association="APDatabaseModel.FK_UserWeek_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

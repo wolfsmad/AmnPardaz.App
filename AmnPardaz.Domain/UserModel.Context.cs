@@ -25,6 +25,11 @@ namespace AmnPardaz.Domain
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<DayWeek> DayWeeks { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Time> Times { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserWeek> UserWeeks { get; set; }
     }
 }
