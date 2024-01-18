@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmnPardaz.Api", "AmnPardaz.Api\AmnPardaz.Api.csproj", "{B95B4E2A-34BE-4378-BC43-49F2770E793E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmnPardaz.Domain", "AmnPardaz.Domain\AmnPardaz.Domain.csproj", "{0347A208-FA77-42AA-AF5C-07EE308CF11D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmnPardaz.App", "AmnPardaz.App\AmnPardaz.App.csproj", "{F694DB5A-F26E-44EB-884B-2F564C8AFF47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmnPardaz.Core", "AmnPardaz.Core\AmnPardaz.Core.csproj", "{7FD5260F-C6E1-4A78-ADA9-7B0CACAF1504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmnPardaz.Domain", "AmnPardaz.Domain\AmnPardaz.Domain.csproj", "{059CC5AF-6610-45E4-9259-67436A0F3351}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmnPardaz.Core", "AmnPardaz.Core\AmnPardaz.Core.csproj", "{64173D88-5853-41C0-AAF8-3B02B70DF54B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmnPardaz.App", "AmnPardaz.App\AmnPardaz.App.csproj", "{E82B349C-5BDF-4D94-A5DC-815904D7118F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B95B4E2A-34BE-4378-BC43-49F2770E793E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B95B4E2A-34BE-4378-BC43-49F2770E793E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B95B4E2A-34BE-4378-BC43-49F2770E793E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B95B4E2A-34BE-4378-BC43-49F2770E793E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F694DB5A-F26E-44EB-884B-2F564C8AFF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F694DB5A-F26E-44EB-884B-2F564C8AFF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F694DB5A-F26E-44EB-884B-2F564C8AFF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F694DB5A-F26E-44EB-884B-2F564C8AFF47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{059CC5AF-6610-45E4-9259-67436A0F3351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{059CC5AF-6610-45E4-9259-67436A0F3351}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{059CC5AF-6610-45E4-9259-67436A0F3351}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{059CC5AF-6610-45E4-9259-67436A0F3351}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64173D88-5853-41C0-AAF8-3B02B70DF54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64173D88-5853-41C0-AAF8-3B02B70DF54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64173D88-5853-41C0-AAF8-3B02B70DF54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64173D88-5853-41C0-AAF8-3B02B70DF54B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0347A208-FA77-42AA-AF5C-07EE308CF11D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0347A208-FA77-42AA-AF5C-07EE308CF11D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0347A208-FA77-42AA-AF5C-07EE308CF11D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0347A208-FA77-42AA-AF5C-07EE308CF11D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD5260F-C6E1-4A78-ADA9-7B0CACAF1504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD5260F-C6E1-4A78-ADA9-7B0CACAF1504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD5260F-C6E1-4A78-ADA9-7B0CACAF1504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD5260F-C6E1-4A78-ADA9-7B0CACAF1504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E82B349C-5BDF-4D94-A5DC-815904D7118F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E82B349C-5BDF-4D94-A5DC-815904D7118F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E82B349C-5BDF-4D94-A5DC-815904D7118F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E82B349C-5BDF-4D94-A5DC-815904D7118F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
