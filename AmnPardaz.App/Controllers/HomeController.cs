@@ -4,6 +4,7 @@ using AmnPardaz.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -17,7 +18,7 @@ namespace AmnPardaz.App.Controllers
         {
             _userServices = userServices;
         }
-
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -30,15 +31,11 @@ namespace AmnPardaz.App.Controllers
                 bool isSuccessLogin = _userServices.Loginuser(model);
                 if (isSuccessLogin)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName , false);
+                    FormsAuthentication.SetAuthCookie(model.UserName, false);
                     return RedirectToAction("Information");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid userName and Password");
-                }
             }
-       
+            ModelState.AddModelError("", "Invalid userName and Password");
             return View(model);
         }
         [Route("Information")]
