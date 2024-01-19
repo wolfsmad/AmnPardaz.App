@@ -12,28 +12,28 @@ namespace AmnPardaz.Domain
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class APDatabaseEntities : DbContext
     {
         public APDatabaseEntities()
             : base("name=APDatabaseEntities")
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<APDatabaseEntities>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Courses>().HasKey(c => c.CourseId);
+            modelBuilder.Entity<Cours>().HasKey(c => c.CourseId);
             modelBuilder.Entity<DayWeek>().HasKey(d => d.DayId);
-            modelBuilder.Entity<Times>().HasKey(d => d.TimeId);
-            modelBuilder.Entity<Users>().HasKey(d => d.UserId);
+            modelBuilder.Entity<Time>().HasKey(d => d.TimeId);
+            modelBuilder.Entity<User>().HasKey(d => d.UserId);
             modelBuilder.Entity<UserWeek>().HasKey(d => d.UWID);
+            modelBuilder.Entity<UserWeek>().ToTable("UserWeek", "dbo");
         }
 
-        public virtual DbSet<Courses> Courses { get; set; }
-        public virtual DbSet<DayWeek> DayWeek { get; set; }
-        public virtual DbSet<Times> Times { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<UserWeek> UserWeek { get; set; }
+        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<DayWeek> DayWeeks { get; set; }
+        public virtual DbSet<Time> Times { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserWeek> UserWeeks { get; set; }
     }
 }

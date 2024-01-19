@@ -1,7 +1,27 @@
-﻿
+﻿@model List<AmnPardaz.Domain.UserWeek>
+
 @{
-    ViewBag.Title = "Information";
+    ViewBag.Title = "User Information";
 }
 
-<h2>Information</h2>
+<h2>User Information</h2>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Property1</th>
+            <th>Property2</th>
+            <!-- Add columns for other properties -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var userWeek in Model)
+        {
+            <tr>
+                <td>@userWeek.CourseId</td>
+                <td>@userWeek.DayId</td>
+                <!-- Add cells for other properties -->
+            </tr>
+        }
+    </tbody>
+</table>

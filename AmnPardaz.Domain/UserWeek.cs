@@ -11,20 +11,20 @@ namespace AmnPardaz.Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("UserWeek", Schema = "dbo")]
     public partial class UserWeek
     {
-        [Key]
         public int UWID { get; set; }
         public int UserId { get; set; }
         public int DayId { get; set; }
         public int CourseId { get; set; }
         public int TimeId { get; set; }
     
-        public virtual Courses Courses { get; set; }
+        public virtual Cours Cours { get; set; }
         public virtual DayWeek DayWeek { get; set; }
-        public virtual Times Times { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual Time Time { get; set; }
+        public virtual User User { get; set; }
     }
 }

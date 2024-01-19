@@ -1,9 +1,11 @@
 ﻿using AmnPardaz.Core.Interfaces;
 using AmnPardaz.Core.ModelViews;
 using AmnPardaz.Core.Services;
+using AmnPardaz.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
@@ -26,7 +28,7 @@ namespace AmnPardaz.App.Controllers
         [HttpPost]
         public ActionResult Index(LoginModelView model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 bool isSuccessLogin = _userServices.Loginuser(model);
                 if (isSuccessLogin)
@@ -40,10 +42,14 @@ namespace AmnPardaz.App.Controllers
         }
         [Route("Information")]
         [Authorize]
+        [HttpGet]
         public ActionResult Information()
         {
-            return View();
+            int userId = _userServices.GetUserIdByUserName(User.Identity.Name);
+            var userInformation = _userServices.GetUserInformation(userId);
+            return View(userInformation);
         }
+
         [Authorize]
         public ActionResult Logout()
         {
