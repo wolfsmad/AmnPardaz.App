@@ -9,19 +9,123 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Property1</th>
-            <th>Property2</th>
-            <!-- Add columns for other properties -->
+            <th>Days</th>
+            <th>
+                8-10
+            </th>
+            <th>
+                10-12
+            </th>
+            <th>
+                13-15
+            </th>
+            <th>
+                15-17
+            </th>
+
         </tr>
     </thead>
     <tbody>
-        @foreach (var userWeek in Model)
-        {
-            <tr>
-                <td>@userWeek.CourseId</td>
-                <td>@userWeek.DayId</td>
-                <!-- Add cells for other properties -->
-            </tr>
-        }
+        <tr>
+            <td>
+                shanbe
+            </td>
+            @foreach (var shnabe in Model)
+            {
+                <td>
+                    @if (shnabe.DayWeek.DayName == "shanbe")
+                    {
+                        @shnabe.Cours.Title
+                    }
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>
+                1shanbe
+            </td>
+            @foreach (var yekshanbe in Model)
+            {
+                if (yekshanbe.DayWeek.DayName == "1shanbe")
+                {
+                    <td>
+                        @yekshanbe.Cours.Title
+                    </td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>
+                2shanbe
+            </td>
+            @foreach (var doshanbe in Model)
+            {
+                if (doshanbe.DayWeek.DayName == "2shanbe")
+                {
+                    <td>
+                        @doshanbe.Cours.Title
+                    </td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>
+                3shanbe
+            </td>
+            @foreach (var seshanbe in Model)
+            {
+                if (seshanbe.DayWeek.DayName == "3shanbe")
+                {
+                    <td>
+                        @seshanbe.Cours.Title
+                    </td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>
+                4shanbe
+            </td>
+            @foreach (var charshanbe in Model)
+            {
+                if (charshanbe.DayWeek.DayName == "4shanbe")
+                {
+                    <td>
+                        @charshanbe.Cours.Title
+                    </td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>
+                5shanbe
+            </td>
+            @foreach (var panjshanbe in Model)
+            {
+                if (panjshanbe.DayWeek.DayName == "5shanbe")
+                {
+                    <td>
+                        @panjshanbe.Cours.Title
+                    </td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>
+                jomee
+            </td>
+            @foreach (var jomee in Model)
+            {
+                <td>
+                    @if (jomee.DayWeek.DayName == "jomee")
+                    {
+                        @jomee.Cours.Title
+                    }
+               
+                </td>
+            }
+        </tr>
+
     </tbody>
 </table>
+<a href="/home/logout">log out</a>

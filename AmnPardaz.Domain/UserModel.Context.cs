@@ -28,6 +28,10 @@ namespace AmnPardaz.Domain
             modelBuilder.Entity<User>().HasKey(d => d.UserId);
             modelBuilder.Entity<UserWeek>().HasKey(d => d.UWID);
             modelBuilder.Entity<UserWeek>().ToTable("UserWeek", "dbo");
+            modelBuilder.Entity<DayWeek>().ToTable("DayWeek", "dbo");
+            modelBuilder.Entity<Cours>().ToTable("Courses", "dbo");
+
+
         }
 
         public virtual DbSet<Cours> Courses { get; set; }

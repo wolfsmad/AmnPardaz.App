@@ -11,7 +11,9 @@ namespace AmnPardaz.Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("DayWeek", Schema = "dbo")]
     public partial class DayWeek
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
