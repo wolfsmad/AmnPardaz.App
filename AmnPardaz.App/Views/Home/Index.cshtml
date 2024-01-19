@@ -4,24 +4,40 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<form action="/" method="post" >
-    <div>
-        <lable>UserName:</lable>
-        <input type="text" id="UserName" name="UserName" required />
-        <span id="UserNameError" class="text-danger"> @Html.ValidationMessageFor(m => m.UserName)</span>
-        <br />
-        <label>Password:</label>
-        <input type="password" id="Password" name="Password" required />
-        <span id="UserNameError" class="text-danger"> @Html.ValidationMessageFor(m => m.Password)</span>
-        <br />
-        <input type="submit" value="Index" />
-    </div>  
-</form>
+<div class="content">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <h2>Sign In</h2>
+        <form action="/" method="post">
+            <div class="form">
 
-<script>
-    function updateErrorMessage(inputId, errorMessage) {
-        var errorSpan = document.getElementById(inputId + 'Error');
-        errorSpan.textContent = errorMessage;
+                <div class="inputBox">
+
+                    <input type="text" id="UserName" name="UserName" required> <i>Username</i>
+                </div>
+
+                <div class="inputBox">
+
+                    <input type="password" id="Password" name="Password" required>
+                    <i>Password</i>
+
+                </div>
+
+                <div class="inputBox">
+
+                    <input type="submit" value="Index">
+
+                </div>
+            </div>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p style="color:white">@error.ErrorMessage</p>
+            }
+        </form>
     }
-</script>
+    else
+    {
+        <h2>Welcome, @User.Identity.Name!</h2>
+
+    }
+</div>

@@ -37,7 +37,7 @@ namespace AmnPardaz.App.Controllers
                     return RedirectToAction("Information");
                 }
             }
-            ModelState.AddModelError("", "Invalid userName and Password");
+            ModelState.AddModelError("", "");
             return View(model);
         }
         [Route("Information")]
